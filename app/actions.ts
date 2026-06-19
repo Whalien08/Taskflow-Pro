@@ -2,8 +2,13 @@
 
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { getCurrentUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export async function createTask(formData: FormData) {
+  const user = await getCurrentUser();
+  if (!user) redirect("/auth");
+
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
   const priority = formData.get("priority") as string;
@@ -15,6 +20,7 @@ export async function createTask(formData: FormData) {
       description,
       priority,
       dueDate: dueDate ? new Date(dueDate) : null,
+      userId: user.sub,
     },
   });
 
