@@ -1,6 +1,8 @@
 import AddTaskForm from "@/app/components/AddTaskForm";
 import TaskList from "@/app/components/TaskList";
 import { prisma } from "@/lib/prisma";
+import { getCurrentUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export default async function Home({
   searchParams,
@@ -10,13 +12,16 @@ export default async function Home({
     filter?: string;
   }>;
 }) {
-  const params = await searchParams;
+  const user = await getCurrentUser();
+  if (!user) redirect("/auth");
 
+  const params = await searchParams;
   const search = params.search || "";
   const filter = params.filter || "all";
 
   const tasks = await prisma.task.findMany({
     where: {
+      userId: user.sub,
       ...(search && {
         title: {
           contains: search,
@@ -43,9 +48,17 @@ export default async function Home({
 
   return (
     <main className="max-w-2xl mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-6 text-center w-full">
-        TaskFlow Pro
-      </h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-3xl font-bold">TaskFlow Pro</h1>
+        <div className="flex items-center gap-3 text-sm">
+          <span className="text-gray-500">Hi, {user.name}</span>
+          <form action="/api/auth?action=logout" method="POST">
+            <button type="submit" className="text-red-500 underline">
+              Logout
+            </button>
+          </form>
+        </div>
+      </div>
 
       <form>
         <input
