@@ -10,8 +10,16 @@ type Task = {
 };
 
 export default function TaskList({ tasks }: { tasks: Task[] }) {
+  if (tasks.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-zinc-500 text-sm">No tasks found. Try adjusting your filters or add a new task!</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col gap-4">
       {tasks.map((task) => (
         <TaskCard key={task.id} task={task} />
       ))}
