@@ -43,25 +43,14 @@ cd YourRepoName
 npm install
 ```
 
-### 3. Configure Environment Variables
-
-Create a .env file in the root directory and add the following keys. You will need to provision your own Supabase database and Groq API key.
-Code snippet
-
-##### Database connection string from Supabase
-```bash
+# Database connection string from Supabase
 DATABASE_URL="postgresql://postgres.[your-id]:[your-password]@[aws-0-eu-central-1.pooler.supabase.com:6543/postgres](https://aws-0-eu-central-1.pooler.supabase.com:6543/postgres)"
-```
 
-##### AI Integration
-```bash
+# AI Integration
 GROQ_API_KEY="your_groq_api_key_here"
-```
 
-##### Custom Authentication Secret (Can be any secure string)
-```bash
+# Custom Authentication Secret (Can be any secure string)
 JWT_SECRET="your_custom_secret_key_here"
-```
 
 ### 4. Setup the Database
 
