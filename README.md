@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 TaskFlow Pro (Full-Stack AI Task Manager)
 
-## Getting Started
+> **Live Demo:** [https://taskflow-pro-alpha.vercel.app/auth]
 
-First, run the development server:
+TaskFlow Pro is a modern, full-stack task management application built as the final project for the **Mastering Next.js Bootcamp** hosted by DevTown, Microsoft Student Chapter (MSC), and Google Developer Groups (GDG).
 
+This application goes beyond basic CRUD operations by featuring a completely custom-built authentication system and an AI-powered engine that breaks down large tasks into actionable sub-tasks.
+
+---
+
+## ✨ Key Features
+
+* **Custom Authentication Security:** A ground-up security architecture using JSON Web Tokens (JWT) for secure sessions, HTTP-only cookies, and Next.js Middleware to protect private routes.
+* **Password Cryptography:** User passwords are encrypted and hashed utilizing `bcryptjs` (12 rounds) before entering the database.
+* **AI Sub-Task Generation:** Integrated with the Groq AI API to automatically analyze user tasks and generate step-by-step, actionable sub-tasks.
+* **Full CRUD Functionality:** Users can Create, Read, Update, and Delete tasks with priority tagging (High, Medium, Low) and due dates.
+* **Database Driven:** Powered by a PostgreSQL relational database managed seamlessly through Prisma ORM.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** Next.js 14 (App Router), React, Tailwind CSS
+* **Backend:** Next.js Server Actions & API Routes
+* **Database:** Supabase (PostgreSQL), Prisma ORM
+* **Security:** `jsonwebtoken`, `bcryptjs`, Next.js Middleware
+* **AI Integration:** Groq API
+
+---
+
+## 💻 Running the Project Locally
+
+If you want to run this project on your own machine, follow these steps:
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [https://github.com/YourUsername/YourRepoName.git](https://github.com/YourUsername/YourRepoName.git)
+cd YourRepoName
+```
+### 2. Install dependencies
+```bash
+
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Configure Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a .env file in the root directory and add the following keys. You will need to provision your own Supabase database and Groq API key.
+Code snippet
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Database connection string from Supabase
+DATABASE_URL="postgresql://postgres.[your-id]:[your-password]@[aws-0-eu-central-1.pooler.supabase.com:6543/postgres](https://aws-0-eu-central-1.pooler.supabase.com:6543/postgres)"
 
-## Learn More
+# AI Integration
+GROQ_API_KEY="your_groq_api_key_here"
 
-To learn more about Next.js, take a look at the following resources:
+# Custom Authentication Secret (Can be any secure string)
+JWT_SECRET="your_custom_secret_key_here"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Setup the Database
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Push the Prisma schema to your PostgreSQL database to create the required User and Task tables.
+```Bash
 
-## Deploy on Vercel
+npx prisma db push
+```
+### 5. Start the Development Server
+```Bash
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎓 Acknowledgments
+
+This project was built during the highly intensive 5-day Next.js Bootcamp. A massive thank you to our mentor, Avanish Cowku, for his excellent instruction on modern web security, server-side rendering, and backend architecture, and to the entire DevTown team for organizing this initiative.
