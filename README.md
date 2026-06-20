@@ -49,13 +49,19 @@ Create a .env file in the root directory and add the following keys. You will ne
 Code snippet
 
 ##### Database connection string from Supabase
+```bash
 DATABASE_URL="postgresql://postgres.[your-id]:[your-password]@[aws-0-eu-central-1.pooler.supabase.com:6543/postgres](https://aws-0-eu-central-1.pooler.supabase.com:6543/postgres)"
+```
 
 ##### AI Integration
+```bash
 GROQ_API_KEY="your_groq_api_key_here"
+```
 
 ##### Custom Authentication Secret (Can be any secure string)
+```bash
 JWT_SECRET="your_custom_secret_key_here"
+```
 
 ### 4. Setup the Database
 
