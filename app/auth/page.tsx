@@ -45,7 +45,8 @@ export default function AuthPage() {
       <div className="w-full max-w-sm bg-zinc-900 p-8 rounded-2xl border border-zinc-800 shadow-xl">
         
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight text-zinc-100 mb-2">
+          {/* Changed text-blue-100 to text-emerald-400 here */}
+          <h1 className="text-3xl font-extrabold tracking-tight text-emerald-400 mb-2">
             TaskFlow <span className="text-blue-500">Pro</span>
           </h1>
           <h2 className="text-zinc-400 text-sm font-medium">

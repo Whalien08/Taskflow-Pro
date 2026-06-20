@@ -48,7 +48,7 @@ export default async function Home({
       
       {/* Header Section */}
       <header className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
-        <h1 className="text-4xl font-extrabold tracking-tight text-zinc-100">
+        <h1 className="text-4xl font-extrabold tracking-tight text-pink-400">
           TaskFlow <span className="text-blue-500">Pro</span>
         </h1>
         <div className="flex items-center gap-4 bg-zinc-900 px-5 py-2.5 rounded-full border border-zinc-800 shadow-sm">
